@@ -1,0 +1,244 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -30px;
+}
+.overview-card {
+  /* border: 1px solid black; */
+  --cardSpacing: 30px;
+  --cardColumns: 4;
+
+  border-radius: 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 3px 1px;
+  background-color: white;
+  width: calc(100% / var(--cardColumns) - var(--cardSpacing));
+  overflow: hidden;
+  margin-left: var(--cardSpacing);
+  padding: 15px;
+}
+.overview-card-icon {
+  background-image: linear-gradient(145deg, #5630c3, #b627ea);
+  border-radius: 15px;
+  /* margin-left: 50px; */
+  width: 65px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.overview-card-icon > i {
+  font-size: 2rem;
+  color: white;
+}
+.h4 {
+  font-weight: 700;
+  color: #3d4655 !important;
+}
+h1 {
+  margin-top: 16px;
+  font-weight: 700;
+  color: #3d4655 !important;
+}
+
+.map-section {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -30px;
+}
+
+.map-container {
+  border-radius: 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 3px 1px;
+  background-color: white;
+  /* width: 100%; */
+  width: calc(75% - 30px);
+  overflow: hidden;
+  margin-left: 30px;
+  padding: 15px;
+}
+
+.somethings {
+  border-radius: 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 3px 1px;
+  background-color: white;
+  width: calc(25% - 30px);
+  overflow: hidden;
+  margin-left: 30px;
+  padding: 15px;
+  text-align: right;
+  list-style-type: none;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+}
+.details-cards {
+  margin-bottom: 36px;
+}
+
+.details-card-title {
+  margin-bottom: 16px;
+}
+.details-card-number {
+  font-weight: 700;
+  font-size: 2.6rem;
+  /* color: #5630c3; */
+}
+/* .total {
+} */
+.recovered {
+  /* color: #2ee6a6; */
+}
+.deaths {
+  /* color: #e66d50; */
+}
+.fatality {
+  /* color: #e6d522; */
+}
+
+.fa-square {
+  margin-right: 5px;
+}
+
+.most {
+  /* color: #5630c3; */
+}
+.less {
+  /* color: #aa97e1; */
+}
+.map {
+  margin-top: 30px;
+}
+.countries-chart {
+  margin-top: 30px;
+}
+.countries-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -30px;
+  /* min-width: 300px; */
+}
+
+.app-region {
+  --spacing: 30px;
+  --columns: 2;
+  border-radius: 15px;
+  
+  background-color: white;
+  width: calc(100% / var(--columns) - var(--spacing));
+  margin-left: 30px;
+
+  /* min-width: 300px; */
+}
+.app-chart {
+  --spacing: 30px;
+  --columns: 2;
+  border-radius: 15px;
+  background-color: white;
+  width: calc(100% / var(--columns) - var(--spacing));
+  /* width: calc(50% - 30px); */
+  margin-left: 30px;
+  padding: 15px 15px 15px 0;
+}
+
+@media screen and (max-width: 1023px) {
+  .overview-card {
+    --cardSpacing: 30px;
+    --cardColumns: 2;
+    margin-bottom: 25px;
+  }
+  .app-region {
+    --spacing: 30px;
+    --columns: 1;
+    order: 2;
+  }
+  .app-chart {
+    --spacing: 30px;
+    --columns: 1;
+    order: 1;
+    margin-bottom: 25px;
+  }
+  .map {
+    margin-top: 0px;
+  }
+  .map-container {
+    width: 100%;
+    margin-bottom: 25px;
+  }
+  .somethings {
+    width: 100%;
+    text-align: center;
+  }
+  .details {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: -30px;
+  }
+  .details-cards {
+    --cardSpacing: 30px;
+    --cardColumns: 2;
+    /* border: 1px solid black; */
+    display: inline-block;
+    flex-direction: row;
+    border-radius: 15px;
+    width: calc(100% / var(--cardColumns) - var(--cardSpacing));
+    margin-left: var(--cardSpacing);
+    padding: 15px;
+
+  }
+  .details-header{
+    font-size: 1.5rem;
+  }
+
+}
+
+@media screen and (max-width: 767px) {
+  .overview-card {
+    --cardSpacing: 30px;
+    --cardColumns: 1;
+    margin-bottom: 25px;
+  }
+
+  .app-region {
+    --spacing: 30px;
+    --columns: 1;
+    order: 2;
+  }
+  .app-chart {
+    --spacing: 30px;
+    --columns: 1;
+    order: 1;
+    margin-bottom: 25px;
+  }
+  .map {
+    margin-top: 0px;
+  }
+  .somethings {
+    width: 100%;
+    text-align: center;
+  }
+  .details {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: -30px;
+  }
+  .details-cards {
+    --cardSpacing: 30px;
+    --cardColumns: 2;
+    /* border: 1px solid black; */
+    display: inline-block;
+    flex-direction: row;
+    border-radius: 15px;
+    width: calc(100% / var(--cardColumns) - var(--cardSpacing));
+    overflow: hidden;
+    margin-left: var(--cardSpacing);
+    padding: 15px;
+  }
+  .details-header{
+    font-size: 1.5rem;
+  }
+  .details-card-number{
+    font-size: 2rem;
+  }
+}

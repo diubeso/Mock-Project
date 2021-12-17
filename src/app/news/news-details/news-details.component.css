@@ -1,0 +1,45 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.image{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.image >img{
+  align-items: center;
+  width: 80%;
+  margin-bottom: 60px;
+  margin-top: 30px;
+}
+video{
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+.main {
+  font-size: 1rem;
+  line-height: 2vh;
+}
+p {
+  padding: 5px;
+  margin: 5px;
+  line-height: 26px;
+}
+h1 {
+  margin: 20px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 50px;
+  text-align: left;
+  margin-left: 0px;
+}
+h4 {
+  font-size: 1.5rem;
+  line-height: 46px;
+  /* font-weight: bold; */
+  font-style: italic;
+}
+
+

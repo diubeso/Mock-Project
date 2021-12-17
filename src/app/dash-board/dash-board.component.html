@@ -1,0 +1,100 @@
+<section class="overview">
+  <div class="container">
+    <h1>Overview</h1>
+    <div class="card-container">
+      <div class="overview-card d-flex justify-content-between">
+        <div class="overview-card-left">
+          <div class="h1">{{ WorldCase?.confirmed | number }}</div>
+          <div>Total Cases</div>
+        </div>
+        <!-- <div class="overview-card-right">
+          <div class="overview-card-icon">
+            <i class="fas fa-virus"></i>
+          </div>
+        </div> -->
+      </div>
+      <div class="overview-card d-flex justify-content-between">
+        <div class="overview-card-left">
+          <div class="h1">{{ WorldCase?.recovered | number }}</div>
+          <div>Recovered</div>
+        </div>
+        <!-- <div class="overview-card-right">
+          <div class="overview-card-icon">
+            <i class="fas fa-running"></i>
+          </div>
+        </div> -->
+      </div>
+      <div class="overview-card d-flex justify-content-between">
+        <div class="overview-card-left">
+          <div class="h1">{{ WorldCase?.deaths | number }}</div>
+          <div>Deaths</div>
+        </div>
+        <!-- <div class="overview-card-right">
+          <div class="overview-card-icon">
+            <i class="fas fa-ghost"></i>
+          </div>
+        </div> -->
+      </div>
+      <div class="overview-card d-flex justify-content-between">
+        <div class="overview-card-left">
+          <div class="h1">{{ FaltiRate.toFixed(2) }}<span>%</span></div>
+          <div>Fatality rate</div>
+        </div>
+        <!-- <div class="overview-card-right">
+          <div class="overview-card-icon">
+            <i class="fas fa-book-dead"></i>
+          </div>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="map">
+  <div class="container">
+    <div class="map-section">
+      <div class="map-container">
+        <div class="d-flex justify-content-between">
+          <div class="map-header font-weight-bold">Affected Area</div>
+        </div>
+        <div class="leaflet">
+          <app-map></app-map>
+        </div>
+      </div>
+      <div class="somethings">
+        <p class="font-weight-bold details-header">Country Details</p>
+        <div class="details">
+          <div class="details-cards">
+            <div class="details-card-title">Total Cases</div>
+            <div class="details-card-number total">{{ confirmedCountry | number }}</div>
+          </div>
+          <div class="details-cards">
+            <div class="details-card-title">Recovered</div>
+            <div class="details-card-number recovered">{{ recovereddCountry | number }}</div>
+          </div>
+          <div class="details-cards">
+            <div class="details-card-title">Deaths</div>
+            <div class="details-card-number deaths">{{ deathsCountry | number }}</div>
+          </div>
+          <div class="details-cards">
+            <div class="details-card-title">Fatality rate</div>
+            <div class="details-card-number fatality">{{ FaltiRateCountry.toFixed(2) }}%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="countries-chart">
+  <div class="container">
+    <div class="countries-container">
+      <div class="app-region">
+        <app-region (eventClick)="GetSelectedVal($event)"></app-region>
+      </div>
+      <div class="app-chart">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</section>
