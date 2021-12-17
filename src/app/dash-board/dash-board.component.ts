@@ -6,15 +6,15 @@ import { DashboardService } from '../service/dashboard.service';
   styleUrls: ['./dash-board.component.css'],
 })
 export class DashBoardComponent implements OnInit {
-  constructor(private service: DashboardService) {}
+  constructor(private service: DashboardService) { }
   CountryResult: any;
   avc: boolean = false;
   FaltiRate: Number = 0;
   WorldCase: any;
   FaltiRateCountry: number = 0;
-  recovereddCountry!:number;
-  confirmedCountry!:number;
-  deathsCountry!:number;
+  recovereddCountry!: number;
+  confirmedCountry!: number;
+  deathsCountry!: number;
   IsoCountry!: string;
 
   ngOnInit(): void {

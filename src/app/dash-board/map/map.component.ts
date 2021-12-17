@@ -1,45 +1,197 @@
 import { Component, OnInit } from '@angular/core';
-import * as L from 'leaflet';
+import Highcharts from 'highcharts/highmaps';
+
+import worldMap from '@highcharts/map-collection/custom/world.geo.json';
+import { Options } from 'highcharts';
+import { DashboardService } from 'src/app/service/dashboard.service';
 
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+  styleUrls: ['./map.component.css'],
 })
 export class MapComponent implements OnInit {
+  data: any;
+  dataFilter: any;
 
-  private map: any;
-  private centroid: L.LatLngExpression = [42.3601, -71.0589]; //
-
-  private initMap(): void {
-    this.map = L.map('map', {
-      center: this.centroid,
-      zoom: 12
-    });
-
-    const tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      minZoom: 10,
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    });
-
-    // create 5 random jitteries and add them to map
-    const jittery = Array(5).fill(this.centroid).map( 
-        x => [x[0] + (Math.random() - .5)/10, x[1] + (Math.random() - .5)/10 ]
-      ).map(
-        x => L.marker(x as L.LatLngExpression)
-      ).forEach(
-        x => x.addTo(this.map)
-      );
-
-    tiles.addTo(this.map);
-  
-  }
-
-  constructor() { }
+  constructor(private service: DashboardService) {}
 
   ngOnInit(): void {
-    this.initMap();
+    this.service.GetAllDataCountries().subscribe((e) => {
+      this.data = e;
+      console.log(this.data);
+      this.dataFilter = this.data.map((el: any) => [
+        el.countrycode?.iso2.toLowerCase(),
+      el.deaths
+      ]);
+      console.log(this.dataFilter);
+
+      this.chartOptions = {
+        
+        chart: {
+          // spacingBottom: 20,
+          // events: {
+          //   load: function () {
+          //     this.mapZoom(2);
+          //   },
+          // },
+          map: worldMap as any,
+        },
+        title: {
+          text: '',
+        },
+        exporting: {
+          enabled: true,
+        },
+        credits: {
+          enabled: false,
+        },
+        mapNavigation: {
+          enabled: true,
+          buttonOptions: {
+            alignTo: 'spacingBox',
+            verticalAlign: 'bottom'
+          },
+        },
+        legend: {
+          enabled: true,
+        },
+        colorAxis: {
+          dataClasses: [
+            {
+              to: 50000,
+              color: '#9D81EA',
+            },
+            {
+              from: 50001,
+              to: 100000,
+              color: '#a791df',
+            },
+            {
+              from: 100001,
+              color: '#5630C3',
+            },
+
+          ],
+          type: 'linear',
+        },
+        tooltip: {
+          headerFormat: '<b>{point.point.name}</b><br>',
+          pointFormat: 'Deaths: {point.value}'
+        },
+        series: [
+          {
+            point: {
+              events: {
+                click: (e: any) => {
+                  this.getDataByCountryKey(e.point['hc-key']);
+                },
+
+              },
+            },
+            type: 'map',
+            states: {
+              hover: {
+                // color: "#BADA55"
+              },
+            },
+            dataLabels: {
+              enabled: false,
+              format: '{point.name}',
+
+            },
+            allAreas: false,
+
+
+           data: this.dataFilter,
+
+          },
+        ],
+      };
+    });
   }
 
+  getDataByCountryKey(ckey: any) {
+    console.log('CountryKey:' + ckey);
+  }
+  onChartInstance(event: any) {
+    console.log(event);
+  }
+
+  Highcharts: typeof Highcharts = Highcharts;
+  chartConstructor = 'mapChart';
+
+  chartOptions: Options = {
+    chart: {
+      map: worldMap as any,
+    },
+    title: {
+      text: '',
+    },
+    // subtitle: {
+    //     text: 'Sub title: <a href="http://code.highcharts.com/mapdata/custom/world.js"> xyzzzz</a>'
+    // },
+    exporting: {
+      enabled: true,
+    },
+    credits: {
+      enabled: false,
+    },
+    mapNavigation: {
+      enabled: true,
+      buttonOptions: {
+        alignTo: 'spacingBox',
+      },
+    },
+    legend: {
+      enabled: true,
+    },
+    colorAxis: {
+
+      type: 'linear',
+    },
+    tooltip: {
+      headerFormat: '<b>{point.point.name}</b><br>',
+      // footerFormat: '<span style="font-size: 10px">(Click for details)</span>',
+    },
+    series: [
+      {
+        point: {
+          events: {
+            click: (e: any) => {
+              this.getDataByCountryKey(e.point['hc-key']);
+            },
+
+            // click: this.getDataByCountryKey.bind(this)
+          },
+        },
+        type: 'map',
+        name: "<b style='font-size:15px'>`{point.name}`</b>",
+        states: {
+          hover: {
+            // color: "#BADA55"
+          },
+        },
+        dataLabels: {
+          enabled: false,
+          format: '{point.name}',
+        },
+        allAreas: false,
+
+        // data : this.dataFilter;
+
+        data: [],
+      },
+    ],
+  };
+
+  // options = {
+  //   layers: [
+  //     tileLayer('https://{s}.tile.openstreetmap.org/{x}/{y}.png', {
+  //       attribution: '&copy; OpenStreetMap contributors',
+  //     }),
+  //   ],
+  //   zoom: 7,
+  //   center: latLng([46.879966, -121.726909]),
+  // };
 }

@@ -111,22 +111,6 @@ export class LineareaChartsComponent implements OnInit {
       },
 
       series: [
-        // {
-        //   data: [],
-        //   type: 'line',
-        //   name: 'Death',
-        //   color: '#333',
-        //   lineWidth: 5,
-        //   // fillOpacity: 0.1,
-        // },
-        // {
-        //   data: [],
-        //   type: 'line',
-        //   name: 'Confirmed',
-        //   color: '#6d37ab',
-        //   lineWidth: 3,
-        //   //fillOpacity: 0.2,
-        // },
         {
           type: 'pie',
           name: 'Total Country Case',
