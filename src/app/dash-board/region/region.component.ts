@@ -30,7 +30,7 @@ export class RegionComponent {
   @ViewChild(MatSort) sort!: MatSort;
   @Output() eventClick = new EventEmitter<any>();
 
-  constructor(private service: DashboardService, private router: Router) {}
+  constructor(private service: DashboardService, private router: Router) { }
   searchValue!: string;
   avc: boolean = false;
   FaltiRate: Number = 0;
@@ -54,12 +54,13 @@ export class RegionComponent {
     // console.log(this.country);
   }
   Cleck(Iso2Country: string) {
+
     if (Iso2Country == null) {
-      this.router.navigate([`dashboard/Nodata`]);
       return;
     }
     this.router.navigate([`dashboard/${Iso2Country}`]);
     this.eventClick.emit(Iso2Country);
+ 
   }
   CalRate(CaseDeath: number, CaseConfirmed: number): number {
     return (CaseDeath / CaseConfirmed) * 100;
@@ -67,4 +68,5 @@ export class RegionComponent {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
 }

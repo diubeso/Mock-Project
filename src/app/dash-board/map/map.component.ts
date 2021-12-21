@@ -110,7 +110,6 @@ export class MapComponent implements OnInit {
       };
     });
   }
-
   getDataByCountryKey(ckey: any) {
     console.log('CountryKey:' + ckey);
   }

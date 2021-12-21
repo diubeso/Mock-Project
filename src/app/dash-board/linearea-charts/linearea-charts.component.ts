@@ -15,6 +15,7 @@ interface TimeValue {
 })
 export class LineareaChartsComponent implements OnInit {
   @Input() IsoCountry = '';
+
   Count: number = 0;
   Confirm!: number[];
   chartOptions: Highcharts.Options;
@@ -94,11 +95,11 @@ export class LineareaChartsComponent implements OnInit {
       },
       yAxis: {
         title: {
-          text: 'Case Confirmed',
+          text: 'Dead Case Confirmed',
         },
 
         lineWidth: 2,
-        offset: 15,
+        offset: 5,
         tickWidth: 2,
         alignTicks: true,
       },
@@ -113,24 +114,9 @@ export class LineareaChartsComponent implements OnInit {
       series: [
         {
           type: 'pie',
-          name: 'Total Country Case',
+          name: 'Dead Case',
           data: [
-            {
-              name: 'Recovered',
-              y: 19,
-              color: '#fafa',
-            },
-
-            {
-              name: 'Confirmed',
-              y: 23,
-              color: '#f22',
-            },
-            {
-              name: 'Death ',
-              y: 13,
-              color: '#333',
-            },
+            
           ],
           tooltip: {},
           //center: [70, 60],
@@ -158,6 +144,8 @@ export class LineareaChartsComponent implements OnInit {
       });
     });
   }
+
+
   OnUpdateVal(Day: string) {
     let timvalue = [];
     let ConfirmedCase = [];
@@ -226,7 +214,7 @@ export class LineareaChartsComponent implements OnInit {
       },
       series: [
         {
-          type: 'bar',
+          type: 'spline',
           data: deathss,
           tooltip: {
             valueSuffix: '',

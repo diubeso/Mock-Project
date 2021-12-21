@@ -24,11 +24,14 @@ export class DashBoardComponent implements OnInit {
     });
     this.GetSelectedVal('AF');
   }
-
+  addItem(value: any): void {
+    // console.log(value);
+  }
   CalRate(CaseDeath: number, CaseConfirmed: number): number {
     return (CaseDeath / CaseConfirmed) * 100;
   }
   GetSelectedVal(SearchVal: string) {
+    console.log(SearchVal);
     this.service.SearchValByIso2(SearchVal).subscribe((e) => {
       this.CountryResult = e;
       this.confirmedCountry = this.CountryResult[0].confirmed
