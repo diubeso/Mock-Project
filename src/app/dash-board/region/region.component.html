@@ -16,8 +16,7 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Country</th>
         <!-- [routerLink]="['/dashboard',element?.countrycode?.iso2 ]" -->
 
-        <td mat-cell class="mat-cell-country" *matCellDef="let element"
-          (click)="Cleck(element?.countrycode?.iso2)">
+        <td mat-cell class="mat-cell-country" *matCellDef="let element" (click)="Cleck(element?.countrycode?.iso2)">
           {{ element.countryregion}}
         </td>
 
@@ -31,7 +30,7 @@
         </td>
       </ng-container>
 
-      <!-- Weight Column -->
+      <!-- Deaths Column -->
       <ng-container matColumnDef="deaths">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Deaths</th>
         <td mat-cell *matCellDef="let element">{{ element.deaths | number }}</td>
@@ -41,8 +40,7 @@
       <ng-container matColumnDef="Fatality rate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Fatality rate</th>
         <td mat-cell *matCellDef="let element">
-          {{ CalRate(element.deaths, element.confirmed).toFixed(2) }}
-          <span>%</span>
+          {{ CalRate(element.deaths, element.confirmed).toFixed(2) }} %
         </td>
       </ng-container>
 

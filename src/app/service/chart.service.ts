@@ -16,9 +16,7 @@ interface CountryTimeseri {
 })
 export class ChartService {
   IsoCountry2 = '';
-  element = '';
-  constructor(private http: HttpClient) {}
-
+  constructor(private http: HttpClient) { }
   GetTimeseriesByIso2(Country: string) {
     return this.http.get<any>(
       `https://master-covid-19-api-laeyoung.endpoint.ainize.ai/jhu-edu/timeseries?iso2=${Country}&onlyCountries=true`
@@ -26,6 +24,5 @@ export class ChartService {
   }
   getData() {
     return this.IsoCountry2;
-    
   }
 }

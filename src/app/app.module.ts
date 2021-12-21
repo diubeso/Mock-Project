@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTableModule } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SearchFilterPipe } from './search-filter.pipe';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,4 +27,4 @@ import { SearchFilterPipe } from './search-filter.pipe';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

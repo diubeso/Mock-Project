@@ -14,7 +14,7 @@ export class AppComponent {
         this.PreLoadingPage = true;
       }
       if (routerevent instanceof NavigationEnd) {
-        this.PreLoadingPage = false;
+        this.PreLoadingPage = false
       }
     });
   }

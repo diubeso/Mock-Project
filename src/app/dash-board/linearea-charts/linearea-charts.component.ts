@@ -15,7 +15,6 @@ interface TimeValue {
 })
 export class LineareaChartsComponent implements OnInit {
   @Input() IsoCountry = '';
-
   Count: number = 0;
   Confirm!: number[];
   chartOptions: Highcharts.Options;
@@ -30,7 +29,7 @@ export class LineareaChartsComponent implements OnInit {
       },
       chart: {
         zoomType: 'x',
-        type: 'line',
+        type: 'spline',
         width: 540,
         height: 450,
         events: {
@@ -76,7 +75,7 @@ export class LineareaChartsComponent implements OnInit {
         area: {
           marker: {
             enabled: true,
-            symbol: 'circle',
+            symbol: '',
             radius: 2,
             states: {
               hover: {
@@ -87,6 +86,7 @@ export class LineareaChartsComponent implements OnInit {
         },
       },
       xAxis: {
+        
         offset: 2,
         lineWidth: 2,
         crosshair: {
@@ -95,11 +95,11 @@ export class LineareaChartsComponent implements OnInit {
       },
       yAxis: {
         title: {
-          text: 'Dead Case Confirmed',
+          text: 'Case Confirmed',
         },
 
         lineWidth: 2,
-        offset: 5,
+        offset: 15,
         tickWidth: 2,
         alignTicks: true,
       },
@@ -113,26 +113,27 @@ export class LineareaChartsComponent implements OnInit {
 
       series: [
         {
-          type: 'pie',
-          name: 'Dead Case',
-          data: [
-            
-          ],
-          tooltip: {},
-          //center: [70, 60],
-          //size: 90,
-          showInLegend: true,
-          dataLabels: {
-            /*  enabled: false */
-          },
+          data: [],
+          type: 'spline',
+          name: 'Death',
+          color: '#333',
+          lineWidth: 5,
         },
+        {
+          data: [],
+          type: 'spline',
+          name: 'Confirmed',
+          color: '#6d37ab',
+          lineWidth: 3,
+
+        },
+        
       ],
     };
   }
   ngOnInit() {
     //Get Data From api
     //
-    this.GetValue = 'AF';
     this.router.paramMap.subscribe((param) => {
       this.GetValue = param.get('Coutry');
       if (this.GetValue == 'Nodata') {
@@ -144,14 +145,12 @@ export class LineareaChartsComponent implements OnInit {
       });
     });
   }
-
-
   OnUpdateVal(Day: string) {
     let timvalue = [];
     let ConfirmedCase = [];
     let DeathCase = [];
     let NewCase = [];
-    let Recovered = [];
+    // let Recovered = [];
     let getvalDay = 0;
     let length = Object.keys(this.datavalue[0].timeseries).length;
     switch (Day) {
@@ -186,20 +185,20 @@ export class LineareaChartsComponent implements OnInit {
       timvalue.push(key);
       ConfirmedCase.push(this.datavalue[0].timeseries[key].confirmed);
       DeathCase.push(this.datavalue[0].timeseries[key].deaths);
-      Recovered.push(this.datavalue[0].timeseries[key].recovered);
+      // Recovered.push(this.datavalue[0].timeseries[key].recovered);
     }
     timvalue.shift();
     for (let i = 1; i < this.Value.length; i++) {
       var confimred = ConfirmedCase[i] - ConfirmedCase[i - 1];
       var deaths = DeathCase[i] - DeathCase[i - 1];
-      var recovered = Recovered[i] - Recovered[i - 1];
+      // var recovered = Recovered[i] - Recovered[i - 1];
       NewCase.push(confimred);
       deathss.push(deaths);
-      recovereds.push(recovered);
+      // recovereds.push(recovered);
     }
     let totalconfirmed = NewCase.reduce((pre, cur) => pre + cur);
     let TotalDeaths = deathss.reduce((pre, cur) => pre + cur);
-    let TotalRecovered = recovereds.reduce((pre, cur) => pre + cur);
+    // let TotalRecovered = recovereds.reduce((pre, cur) => pre + cur);
     this.chartOptions = {
       chart: {
         events: {
@@ -228,13 +227,13 @@ export class LineareaChartsComponent implements OnInit {
           },
         },
         {
-          type: 'pie',
+          type: 'spline',
           data: [
-            {
-              name: 'Recovered',
-              y: TotalRecovered,
-              color: '#fafa',
-            },
+            // {
+            //   name: 'Recovered',
+            //   y: TotalRecovered,
+            //   color: '#fafa',
+            // },
 
             {
               name: 'Confirmed',

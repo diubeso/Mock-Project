@@ -83,18 +83,18 @@ h1 {
 .details-card-number {
   font-weight: 700;
   font-size: 2.6rem;
-  /* color: #5630c3; */
+  color: #5630c3;
 }
 /* .total {
 } */
 .recovered {
-  /* color: #2ee6a6; */
+  color: #2ee6a6;
 }
 .deaths {
-  /* color: #e66d50; */
+  color: #e66d50;
 }
 .fatality {
-  /* color: #e6d522; */
+  color: #e6d522;
 }
 
 .fa-square {
@@ -102,10 +102,10 @@ h1 {
 }
 
 .most {
-  /* color: #5630c3; */
+  color: #5630c3;
 }
 .less {
-  /* color: #aa97e1; */
+  color: #aa97e1;
 }
 .map {
   margin-top: 30px;
@@ -124,7 +124,7 @@ h1 {
   --spacing: 30px;
   --columns: 2;
   border-radius: 15px;
-  
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 3px 1px;
   background-color: white;
   width: calc(100% / var(--columns) - var(--spacing));
   margin-left: 30px;
@@ -135,6 +135,7 @@ h1 {
   --spacing: 30px;
   --columns: 2;
   border-radius: 15px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 3px 1px;
   background-color: white;
   width: calc(100% / var(--columns) - var(--spacing));
   /* width: calc(50% - 30px); */

@@ -21,7 +21,7 @@ interface CountryDetail {
   providedIn: 'root',
 })
 export class DashboardService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
   getAllCase(): Observable<any> {
     return this.http.get<any>(`https://master-covid-19-api-laeyoung.endpoint.ainize.ai/jhu-edu/brief`);
   }
