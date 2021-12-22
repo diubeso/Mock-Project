@@ -12,7 +12,7 @@ export class DashBoardComponent implements OnInit {
   FaltiRate: Number = 0;
   WorldCase: any;
   FaltiRateCountry: number = 0;
-  recovereddCountry!: number;
+  recoveredCountry!: number;
   confirmedCountry!: number;
   deathsCountry!: number;
   IsoCountry!: string;
@@ -24,23 +24,21 @@ export class DashBoardComponent implements OnInit {
     });
     this.GetSelectedVal('AF');
   }
-  addItem(value: any): void {
-    // console.log(value);
-  }
   CalRate(CaseDeath: number, CaseConfirmed: number): number {
     return (CaseDeath / CaseConfirmed) * 100;
   }
   GetSelectedVal(SearchVal: string) {
-    console.log(SearchVal);
+
     this.service.SearchValByIso2(SearchVal).subscribe((e) => {
       this.CountryResult = e;
       this.confirmedCountry = this.CountryResult[0].confirmed
-      this.recovereddCountry = this.CountryResult[0].recovered
+      this.recoveredCountry = this.CountryResult[0].recovered
       this.deathsCountry = this.CountryResult[0].deaths
       this.FaltiRateCountry = this.CalRate(
         this.CountryResult[0].deaths,
         this.CountryResult[0].confirmed
       );
+      console.log(this.CountryResult[0].confirmed);
     });
   }
 }

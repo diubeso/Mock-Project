@@ -23,7 +23,7 @@ interface CountryDetail {
 export class DashboardService {
   constructor(private http: HttpClient) { }
   getAllCase(): Observable<any> {
-    return this.http.get<any>(`https://master-covid-19-api-laeyoung.endpoint.ainize.ai/jhu-edu/brief`);
+    return this.http.get<any>(`https://master-covid-19-api-laeyoung.endpoint.ainize.ai/jhu-edu/brief/`);
   }
 
   GetAllDataCountries(): Observable<any> {
@@ -37,6 +37,7 @@ export class DashboardService {
   SearchValByIso2(Value: string) {
     return this.http.get<CountryDetail>(
       `https://master-covid-19-api-laeyoung.endpoint.ainize.ai/jhu-edu/latest?iso2=${Value}`
+      
     );
   }
 }
