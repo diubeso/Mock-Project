@@ -1,9 +1,9 @@
 <div class="mat-elevation-z8 d-flex">
   <div class="table-header d-flex justify-content-between">
     <div class="font-weight-bold">Effected Top Countries</div>
-    <!-- <div class="search">
+    <div class="search">
       <input matInput #filter (keyup)="applyFilter(filter.value)" placeholder="Search">
-    </div> -->
+    </div>
   </div>
   <div class="table-container">
     <table mat-table [dataSource]="dataSource" matSort>
@@ -51,11 +51,10 @@
       <!-- Header -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-
     </table>
   </div>
 
   <!-- Paginator -->
-  <!-- <mat-paginator [pageSizeOptions]="[7, 14, 21]" showFirstLastButtons>
-  </mat-paginator> -->
+  <mat-paginator [pageSizeOptions]="[7, 14, 21]" showFirstLastButtons>
+  </mat-paginator>
 </div>

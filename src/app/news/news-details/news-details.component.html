@@ -1,26 +1,26 @@
 <section>
     <div class="container">
         <div class="tittle text-center">
-            <h1>{{DataNews?.Tittle}}</h1>
+            <h1>{{DataNews?.title}}</h1>
         </div>
         <div class="content">
-            <h4>{{DataNews?.firstContent}}</h4>
+            <h4>{{DataNews?.content}}</h4>
         </div>
-        <video width="80%" [poster]="DataNews?.imagecontent" controls>
+        <!-- <video width="80%" controls>
             <source src="{{Video}}" type="video/mp4">
             <source
                 src="https://thanhnien.mediacdn.vn/325084952045817856/2021/8/7/dung-hoan-toan-duong-bay-tphcm-ha-noi-phong-covid-19--1628342015422668745963.mp4"
                 type="video/mp4">
-        </video>
-        <p>{{Video}}</p>
+        </video> -->
+        <!-- <p>{{Video}}</p> -->
         <hr>
         <div class="main-content">
             <div class="image">
-                <img [src]="DataNews?.imagecontent" alt="">
+                <img [src]="DataNews?.urlToImage" alt="">
             </div>
             <div class="main">
-                {{DataNews?.mainContent | replace }}
-                <p [innerHTML]="DataNews?.mainContent | replace"></p>
+                {{DataNews?.content}}
+                <p [innerHTML]="DataNews?.content"></p>
             </div>
         </div>
     </div>

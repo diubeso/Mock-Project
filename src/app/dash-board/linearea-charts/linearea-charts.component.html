@@ -1,19 +1,12 @@
 <div class="d-flex justify-content-between">
   <div class="font-weight-bold ml-3">Daily confirmed COVID-19 cases and deaths </div>
-  <div >
+  <div>
     <button mat-button (click)="OnUpdateVal('week')" color="accent"> Week</button>
     <button mat-button (click)="OnUpdateVal('All')" color="accent">All</button>
-    <!-- <button mat-button (click)="OnUpdateVal('2month')" color="accent">2 months</button>
-    <button mat-button (click)="OnUpdateVal('month')" color="accent"> Month</button> -->
-    <!-- <button mat-button [matMenuTriggerFor]="menu" class="">Filter</button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="OnUpdateVal('All')">All</button>
-      <button mat-menu-item (click)="OnUpdateVal('2month')">2 months</button>
-      <button mat-menu-item (click)="OnUpdateVal('month')">1 month</button>
-      <button mat-menu-item (click)="OnUpdateVal('week')">1 week</button>
-    </mat-menu> -->
+    <button mat-button (click)="OnUpdateVal('month')" color="accent"> Month</button>
+
   </div>
 </div>
 <highcharts-chart [Highcharts]="highcharts" [options]="chartOptions" ref="chart"
-  style="width: 100%; height: 100%; display: block">
+  style="width: 100%; height: 100%; display: inline-block">
 </highcharts-chart>
